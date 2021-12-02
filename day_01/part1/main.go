@@ -1,29 +1,20 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"math"
-	"os"
-	"strconv"
+
+	"github.com/sachinagada/advent-of-code-2021/helper"
 )
 
 func main() {
-	r, readErr := os.Open("../input.txt")
-	if readErr != nil {
-		panic("error reading input file")
-	}
+	scanner := helper.ScanFile("../input.txt")
 
-	scanner := bufio.NewScanner(r)
-
-	prev := int64(math.MaxInt64)
+	prev := math.MaxInt64
 	count := 0
 	for scanner.Scan() {
 		l := scanner.Text()
-		cur, parseErr := strconv.ParseInt(l, 10, 64)
-		if parseErr != nil {
-			panic("non integer found on line")
-		}
+		cur := helper.ParseInt(l)
 
 		if cur > prev {
 			count++

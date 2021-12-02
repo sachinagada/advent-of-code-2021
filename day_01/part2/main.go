@@ -3,17 +3,13 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"os"
 	"strconv"
+
+	"github.com/sachinagada/advent-of-code-2021/helper"
 )
 
 func main() {
-	r, readErr := os.Open("../input.txt")
-	if readErr != nil {
-		panic("error reading input file")
-	}
-
-	scanner := bufio.NewScanner(r)
+	scanner := helper.ScanFile("../input.txt")
 
 	// can either use holdArray or slidingWindow to compute the count. Tried
 	// doint it two different ways.
@@ -31,10 +27,7 @@ func slidingWindow(scanner *bufio.Scanner) int {
 	count := 0                // number of times the sliding window has increased
 	for scanner.Scan() {
 		l := scanner.Text()
-		cur, parseErr := strconv.ParseInt(l, 10, 64)
-		if parseErr != nil {
-			panic("non integer found on line")
-		}
+		cur := helper.ParseInt(l)
 
 		if len(wind) < 3 {
 			wind = append(wind, int(cur))
