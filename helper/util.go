@@ -24,3 +24,12 @@ func ParseInt(s string) int {
 
 	return int(i)
 }
+
+func ParseBinary(s string) int {
+	i, parseErr := strconv.ParseInt(s, 2, 64)
+	if parseErr != nil {
+		panic("unexpected error:" + parseErr.Error())
+	}
+
+	return int(i)
+}
