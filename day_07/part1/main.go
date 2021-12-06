@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	scanner := helper.ScanFile("./input.txt")
+	scanner := helper.ScanFile("../input.txt")
 	innerMain(scanner)
 
 }
